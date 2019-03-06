@@ -1,13 +1,13 @@
 import org.apache.spark.{SparkConf, SparkContext}
 
 object MaxSalary {
-  System.setProperty("hadoop.home.dir", "C:\\Users\\kkhede407\\Downloads\\Hadoop\\")
+  System.setProperty("hadoop.home.dir", "C:\\Users\\xx\\Downloads\\Hadoop\\")
   def main(args: Array[String]): Unit = {
 
     val conf = new SparkConf().setAppName("Emp Dept Assignment").setMaster("local[*]")
     val sc = new SparkContext(conf)
     // Load the source data file into RDD
-    val emp_data = sc.textFile("C:\\Users\\kkhede407\\Downloads\\emp_data.txt")
+    val emp_data = sc.textFile("C:\\Users\\xx\\Downloads\\emp_data.txt")
     println(emp_data.foreach(println))
     // Find first record of the file
     val emp_header = emp_data.first()
@@ -36,6 +36,6 @@ object MaxSalary {
     val salaryWithEmployeeName = emp_data_without_header.map{x => x.split(',')}.map{x => (x(5).toDouble, x(1))}
     val maxSalaryEmployee = salaryWithEmployeeName.groupByKey.takeOrdered(1)(Ordering[Double].reverse.on(_._1))
     print(maxSalaryEmployee.foreach(println))
-    emp_data.saveAsTextFile("C:\\Users\\kkhede407\\Downloads\\SparkTest18")
+    emp_data.saveAsTextFile("C:\\Users\\xx\\Downloads\\SparkTest18")
   }
 }
