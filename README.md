@@ -2,3 +2,5 @@ We are going to use a .txt file and with the initialization of Spark, we are goi
 
 
 Use IntelliJ.
+
+//KK
